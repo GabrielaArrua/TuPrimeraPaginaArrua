@@ -1,0 +1,143 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<h2 style="text-align:center; margin: 10px 0 20px;">Productos 🛍️</h2>
+
+<style>
+:root{
+  --bg:#FFFFFF;
+  --text:#1F1F1F;
+  --primary:#A8DADC; /* celeste */
+  --secondary:#FFD6A5; /* durazno */
+  --accent:#CDB4DB; /* lila */
+}
+
+.container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:22px;
+  padding: 10px 20px 30px;
+}
+
+.card{
+  background: var(--bg);
+  border-radius:18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.img-placeholder{
+  height:140px;
+  border-radius:12px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+.card h3{
+  margin:6px 0;
+  color: var(--text);
+  font-size:18px;
+}
+
+.desc{
+  font-size:14px;
+  color:#555;
+  margin-bottom:10px;
+}
+
+.precio{
+  color: var(--primary);
+  font-weight:700;
+  font-size:20px;
+  margin: 6px 0;
+}
+
+.categoria{
+  font-size:12px;
+  color:#888;
+  margin-bottom:12px;
+}
+
+.btn{
+  border:none;
+  border-radius:10px;
+  padding:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition: all .2s ease;
+}
+
+.btn-primary{
+  background: var(--secondary);
+}
+
+.btn-primary:hover{
+  background: #ffc98a;
+  transform: scale(1.03);
+}
+
+.btn-outline{
+  background: transparent;
+  border:2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover{
+  background: var(--primary);
+  color:#fff;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+}
+
+.empty{
+  text-align:center;
+  color:#777;
+  margin-top:30px;
+}
+</style>
+
+<div class="container">
+
+{% for producto in productos %}
+
+  <div class="card">
+    <div>
+      <div class="img-placeholder">Imagen</div>
+      <h3>{{ producto.nombre }}</h3>
+      <p class="desc">{{ producto.descripcion|truncatechars:80 }}</p>
+      <p class="precio">${{ producto.precio }}</p>
+      <p class="categoria">{{ producto.categoria }}</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary">Comprar</button>
+      <button class="btn btn-outline">Ver más</button>
+    </div>
+  </div>
+
+{% empty %}
+  <p class="empty">No hay productos cargados todavía.</p>
+{% endfor %}
+
+</div>
+
+{% endblock %}
+

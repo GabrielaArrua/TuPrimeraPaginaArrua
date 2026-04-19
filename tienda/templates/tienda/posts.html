@@ -1,0 +1,26 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<h2 style="text-align:center;">Blog 📝</h2>
+
+<div style="max-width:700px; margin:auto;">
+
+{% for post in posts %}
+    <div style="
+        background:white;
+        padding:15px;
+        margin:15px 0;
+        border-radius:12px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    ">
+        <h3>{{ post.titulo }}</h3>
+        <p>{{ post.contenido }}</p>
+    </div>
+{% empty %}
+    <p>No hay posts todavía.</p>
+{% endfor %}
+
+</div>
+
+{% endblock %}
