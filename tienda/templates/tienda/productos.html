@@ -4,6 +4,12 @@
 
 <h2 style="text-align:center; margin: 10px 0 20px;">Productos 🛍️</h2>
 
+{% if user.is_authenticated %}
+<div style="text-align:center; margin-bottom:20px;">
+    <a href="/crear-producto/" class="btn-home">+ Crear Producto</a>
+</div>
+{% endif %}
+
 <style>
 :root{
   --bg:#FFFFFF;

@@ -1,23 +1,91 @@
 {% extends 'tienda/base.html' %}
+{% load static %}
 
 {% block contenido %}
 
-<h2>Mi Perfil</h2>
+<style>
+.perfil-box{
+    max-width:700px;
+    margin:50px auto;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    text-align:center;
+}
 
-{% load static %}
+.avatar{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #A8DADC;
+    margin-bottom:20px;
+}
 
-{% if perfil.avatar %}
-    <img src="{{ perfil.avatar.url }}" width="150" style="border-radius:50%;">
-{% else %}
-    <img src="{% static 'tienda/img/avatar.png' %}" width="150" style="border-radius:50%;">
-{% endif %}
+.perfil-box h2{
+    margin-bottom:25px;
+    font-size:32px;
+}
 
-<p><strong>Usuario:</strong> {{ user.username }}</p>
-<p><strong>Nombre:</strong> {{ user.first_name }}</p>
-<p><strong>Apellido:</strong> {{ user.last_name }}</p>
-<p><strong>Email:</strong> {{ user.email }}</p>
-<p><strong>Biografía:</strong> {{ perfil.biografia }}</p>
-<a href="{% url 'editar_perfil' %}">Editar Perfil</a>
-<a href="{% url 'cambiar_password' %}">Cambiar contraseña</a>
+.info{
+    text-align:left;
+    max-width:420px;
+    margin:0 auto;
+}
+
+.info p{
+    margin:12px 0;
+    font-size:18px;
+    color:#444;
+}
+
+.botones{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn-perfil{
+    background:#FFD6A5;
+    color:black;
+    padding:12px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.2s;
+}
+
+.btn-perfil:hover{
+    background:#ffc98a;
+}
+</style>
+
+<div class="perfil-box">
+
+    {% if perfil.avatar %}
+        <img src="{{ perfil.avatar.url }}" class="avatar">
+    {% else %}
+        <img src="{% static 'tienda/img/avatar.png' %}" class="avatar">
+    {% endif %}
+
+    <h2>Mi Perfil</h2>
+
+    <div class="info">
+        <p><strong>Usuario:</strong> {{ user.username }}</p>
+        <p><strong>Nombre:</strong> {{ user.first_name }}</p>
+        <p><strong>Apellido:</strong> {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Biografía:</strong> {{ perfil.biografia }}</p>
+    </div>
+
+    <div class="botones">
+        <a href="{% url 'editar_perfil' %}" class="btn-perfil">Editar Perfil</a>
+        <a href="{% url 'cambiar_password' %}" class="btn-perfil">Cambiar Contraseña</a>
+    </div>
+
+</div>
 
 {% endblock %}
