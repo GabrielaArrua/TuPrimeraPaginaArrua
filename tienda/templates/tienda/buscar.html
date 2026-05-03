@@ -35,12 +35,13 @@
     text-align: left;
 }
 
-.card-resultado {
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+.card-resultado{
+    transition: all .2s ease;
+}
+
+.card-resultado:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
 .precio {
@@ -57,18 +58,25 @@
         <input type="text" name="nombre" class="buscar-input" placeholder="Ej: pala, grip...">
         <button type="submit" class="btn-buscar">Buscar</button>
     </form>
+    
+<div class="resultados">
 
-    <div class="resultados">
-        {% for producto in resultados %}
-            <div class="card-resultado">
-                <strong>{{ producto.nombre }}</strong><br>
-                <span class="precio">${{ producto.precio }}</span>
-            </div>
-        {% empty %}
-            <p>No se encontraron resultados.</p>
-        {% endfor %}
+{% for producto in resultados %}
+<a href="{% url 'detalle_producto' producto.id %}" style="text-decoration:none; color:inherit;">
+
+    <div class="card-resultado">
+        <strong>{{ producto.nombre }}</strong><br>
+        <span class="precio">${{ producto.precio }}</span>
     </div>
 
+</a>
+
+{% empty %}
+<p>No se encontraron resultados.</p>
+
+{% endfor %}
+
 </div>
+
 
 {% endblock %}

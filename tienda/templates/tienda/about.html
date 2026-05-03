@@ -1,0 +1,60 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<style>
+.about-box{
+    max-width:800px;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    text-align:center;
+}
+
+.about-box h2{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.about-box p{
+    font-size:18px;
+    line-height:1.8;
+    color:#444;
+    margin-bottom:18px;
+}
+
+.highlight{
+    color:#7cc7d6;
+    font-weight:700;
+}
+</style>
+
+<div class="about-box">
+
+    <h2>Acerca de mí</h2>
+
+    <p>
+        Hola, soy <span class="highlight">Gabriela</span>, creadora de 
+        <span class="highlight">SmashUy</span>.
+    </p>
+
+    <p>
+        Este proyecto nace de mi pasión por el 
+        pádel, tenis y beach tennis.
+    </p>
+
+    <p>
+        Quise crear un espacio donde los amantes de estos deportes
+        puedan encontrar productos de calidad de forma simple,
+        moderna y confiable en Uruguay.
+    </p>
+
+    <p>
+        SmashUy representa garra charrúa, deporte y ganas de seguir creciendo.
+    </p>
+
+</div>
+
+{% endblock %}

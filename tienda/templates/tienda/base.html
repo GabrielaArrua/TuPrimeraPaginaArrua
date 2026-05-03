@@ -1,21 +1,174 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmashUy</title>
+
+    <style>
+        body{
+            background: linear-gradient(to bottom, #eef6f8, #f7f9fc);
+            margin:0;
+            min-height:100vh;
+            font-family: Arial, sans-serif;
+            color:#1F1F1F;
+        }
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 25px;
+            background:white;
+            box-shadow:0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap:wrap;
+            gap:15px;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .logo img{
+            height:55px;
+        }
+
+        .logo h2{
+            margin:0;
+        }
+
+        nav{
+            display:flex;
+            gap:25px;
+            flex-wrap:wrap;
+        }
+
+        nav a,
+        a{
+            text-decoration:none;
+            color:#7cc7d6;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        nav a:hover,
+        a:hover{
+            color:#000;
+        }
+
+        .usuario{
+            display:flex;
+            gap:12px;
+            align-items:center;
+            flex-wrap:wrap;
+        }
+
+        button{
+            background:#FFD6A5;
+            border:none;
+            padding:8px 12px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:600;
+            transition:0.2s;
+        }
+
+        button:hover{
+            background:#ffc98a;
+        }
+
+        .logout-btn{
+            background:none;
+            padding:0;
+            color:#7cc7d6;
+            font-size:16px;
+        }
+
+        .logout-btn:hover{
+            background:none;
+            color:#000;
+        }
+
+        hr{
+            border:none;
+            border-top:1px solid #e9ecef;
+            margin:0;
+        }
+
+        .brand{
+            margin:0;
+            font-size:32px;
+            font-weight:900;
+            letter-spacing:1px;
+            color:#1F1F1F;
+            transition:0.3s ease;
+            cursor:pointer;
+        }
+
+        .brand span{
+            color:#7cc7d6;
+        }
+
+        .brand:hover{
+            transform:scale(1.03);
+            letter-spacing:1.5px;
+        }
+
+        .brand:hover span{
+            color:#FFD6A5;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>SmashUy 🎾</h1>
+<div class="navbar">
 
-<nav>
-    <a href="/">Inicio</a>
-    <a href="/crear-producto/">Crear Producto</a>
-    <a href="/crear-categoria/">Crear Categoría</a>
-    <a href="/crear-post/">Crear Post</a>
-    <a href="/buscar/">Buscar</a>
-    <a href="/productos/">Productos</a>
-    <a href="/posts/">Blog</a>
-</nav>
+    <!-- Logo -->
+    <div class="logo">
+        <img src="{% static 'tienda/img/logo.png' %}">
+        <h2 class="brand">
+    Smash<span>Uy</span>
+</h2>
+    </div>
+
+    <!-- Menú -->
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/productos/">Productos</a>
+        <a href="/posts/">Blog</a>
+        <a href="/buscar/">Buscar</a>
+        <a href="/about/">Acerca de mí</a>
+    </nav>
+
+    <!-- Usuario -->
+    <div class="usuario">
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'perfil' %}">Mi Perfil</a>
+
+            <form action="/accounts/logout/" method="post" style="display:inline; margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">
+                    Cerrar sesión
+                </button>
+            </form>
+
+        {% else %}
+
+            <a href="/accounts/login/">Iniciar sesión</a>
+            <a href="/accounts/registro/">Registrarse</a>
+
+        {% endif %}
+
+    </div>
+
+</div>
 
 <hr>
 
@@ -25,22 +178,3 @@
 </body>
 </html>
 
-<style>
-body {
-    background-color: #FFFFFF;
-    color: #1F1F1F;
-    font-family: Arial;
-}
-
-nav a {
-    margin: 10px;
-    color: #A8DADC;
-    text-decoration: none;
-}
-
-button {
-    background-color: #FFD6A5;
-    border: none;
-    padding: 8px;
-}
-</style>

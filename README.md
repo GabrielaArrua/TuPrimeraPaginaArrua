@@ -1,22 +1,81 @@
-# TuPrimeraPaginaArrua
-Tercera entrega - Coder House
+# SmashUy
+Proyecto final desarrollado en Python con Django.
 
 # Descripción
-Web de una tienda de productos para Beach Tennis, Pádel y Tennis. Además, se incluye un blog con diferentes tips para los interesados.
+SmashUy es una tienda online orientada a productos para Beach Tennis, Pádel y Tenis.
+Incluye catálogo de productos, buscador, perfiles de usuario, autenticación y blog con contenido relacionado.
 
-# Funcionalidades
-- Crear productos
-- Crear categorías
-- Crear posts
-#Estas primeras tres funcionalidades las puse solo para esta entrega, para cumplir con los formularios. Para el proyecto final, la idea es que los clientes solo puedan comprar, buscar y ver productos, y ver los posteos.
-- Buscar productos
-- Ver lista de productos
-- Ver detalle de productos
-- Ver blog
+# Funcionalidades principales
 
-# Cómo probar
-1. Ir a /
-2. Navegar a productos
-3. Crear un producto
-4. Buscar un producto
-5. Ver posts
+# Usuarios
+* Registro de usuarios
+* Login / Logout
+* Perfil de usuario
+* Edición de perfil
+* Avatar personalizado
+
+# Productos
+* Ver listado de productos
+* Ver detalle de cada producto
+* Buscar productos
+* Crear productos (solo si el usuario está logueado)
+* Editar productos (solo si el usuario está logueado)
+* Eliminar productos (solo si el usuario está logueado)
+
+# Otras secciones
+* Home
+* Acerca de mí
+* Blog
+* Panel Admin de Django
+
+------------------------------------
+
+# Cómo ejecutar el proyecto
+
+1. Clonar repositorio:
+
+```bash
+git clone URL_DEL_REPOSITORIO
+```
+
+2. Crear entorno virtual:
+
+```bash
+python -m venv venv
+```
+
+3. Activar entorno virtual:
+
+```bash
+venv\Scripts\activate
+```
+
+4. Instalar dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Ejecutar migraciones:
+
+```bash
+python manage.py migrate
+```
+
+6. Iniciar servidor:
+
+```bash
+python manage.py runserver
+```
+----------------------------------
+
+# Rutas principales
+
+* `/` → Inicio
+* `/productos/` → Productos
+* `/buscar/` → Buscar productos
+* `/about/` → Acerca de mí
+* `/accounts/login/` → Login
+* `/accounts/registro/` → Registro
+* `/accounts/perfil/` → Perfil
+
